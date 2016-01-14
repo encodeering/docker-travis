@@ -4,3 +4,26 @@ sudo: required
 
 services:
 - docker
+
+env:
+  global:
+    - secure: XOEn82bKs+gjVrpFh6+qoZx6Opcx0/oN6bni/hWpMNNDZaDRSJ0m+Wh/8kJZtb3Y5kN5a6T7PchEwRMS3fJGsytCFAwo72Y//LP45H4f3t7Mu8O6YhElwDNhAuKs17WrXN2lN48Iy/jxLXqbslYo5mbwGgfAgcJAsL2Y8zPymO5fJm1kgXXos2qhIz5mhiROX2lRdv3C8XGSt+yAP84S/1q48Y191IKQpl8ft8qTYsewcp00fDzcosrWY3zLtiXGHo7AOyyFFm+B7BEaqeb6FXKeS8hOK6q9OPleE52dxBS9Z9kCwRp8Pa1yluxDH/1CWkbuqpmuK0GD65iSxY+rA093dZTpoN0HO/PXjQGxSSELC0TimPUkxw0U871wW+F0cNUlC++BFyuCO5A1TNjsu7wKbTjQkdI02CtUsuJBMPcR2kc83NIwXkKGjCWwL/nRhSGYa5OInxACyiooRow26jH2z631M1aihjTXxa4fBQyTfAY6EQGGnr8pZIpggVM6WRjduGgQSbetukQ/sWzFSrWUAQJ76ngUX9EUEywuo/U+3Dm5GtIiM5XhEGtGd5wZuie/TFz5lfXnOmr739SuVWLarb3c4u9yVqNjDAOoShVC8wAHmGbXBYO89csnvACY4Fz1e6ifT59vnMxE23oOnwDoh+Jjbvqgrlw8zZY1mAk=
+    - secure: K7vKHE2S8OUVblcw+kC4QRc5hnCK64OI6UdX4TAzYRdAVcOMgNeTYdm69rY0YK/F4Gg10c5K5ebs/Lxws+MFP1QBmYSjwq1Z9/Ndd63oY3TImFMLO4fUAk2kkFCzyP2KKeVQC0UzdteUf6VRY31IbxGlESAroHMmn9hgXiT0Du5O8f5CN6TCAr69pIt+vL4gtvLOf8M5yvaCsOqttAbEyjRED5nGlMkzTLnhoOx8VyjMfXLpBWSwnbHE7Ka5icSY+QscrcTXJvmX+G+5ixl8NQUdFNyFK2sUitgnlYO9kPKi29JDdVUKrH3OwYQYWxJrhkW00ePQZL9kDKFAOinqLNjy5okfMxq51ofdpMPzcsLc/kK3/xhMXP68hHRI13xd/E3XgfusSg5JkUWzlxxYR01z1qbz6tjraeumX61nChs7zJgSFsL5xCK6zfxYE5DdL+xgktbhHsGvWfuJYDVxTVmKJmWXZbwpMQ8dR4Cow/LG8icWS1DXm49W8saHotMeehEtgATMigZEHTTfdPTqMad6Y87KeqDTKt5xpVy+TlJA94dve1C/7NDAtphFdPbbanwqfKpOkKgEtdGIT9MPxYuBgXUV10Yc1nrxpVuw1Arj+93Z1aQrAAp2nKTRDgnMu0Yv4vCI5CkwitMWm6PeiUn6EdZ48lSwzIPOg+0uhKY=
+    - secure: esc6lP6ElLRwcS9kk6MnytRK7zQmL1FnMRjocm/9ggH4o9Kszn7TvamnFO7+S02eoWHe5PtJxUJ1eFZlHPVD11eP3YKsbt0+aJx2arG+XkcRb9Ua7Bj17z7tD0fRe+7XVrHmXA+eWqabKmy+PdRupisiUrMD2TQlE5+Ja5qDP/AcHTeF29wwRgteFvVrOZVdS1DtSvNXuUBaSY25DDGZyLpWs6n2kML6lZR4wPipxvIa7eNDPqcGQLFHf8IiONlPURZe8CUaOG1YLVGTqSMiJOywRIugyG/mOqSnnPQcyNSf1zJDUWvbtOsn5DSqxAyX8mAjfqOqd0ZN2fz75Mi71KQiWcqrMTziPZZBGgK4FF3O7nAgFEQiJ8fEsAOWJXDgaMcFn3WquCiReJB84Jju0RwxmYgIAxd/Ck5/6xTw8trZQ7/nQXzk+gVnWoXUkmd59x+taqSi1hWSw7eiXrc8WQbUDWKSoujGaAy2p1eWMTciXP9KLKalKJr7SQQxoXavNGf5SQBOR9YBkmnd+c5qMXOEv+cdnYpkYeJDSuCH+uD1w/rgabwvR7nghjosE32H8ttwVoD6oD/uhRLjAae/m3kE0VKqD2FnEs8bMzpMu/kQrzSrsGunavgTsNvHls0F1ulaDxtyQecVfDcD1j2e+ktV1eT07C9WZC6f1emUPBc=
+    - PROJECT="travis"
+    - REPOSITORY="encodeering"
+  matrix:
+    - ARCH=amd64 VERSION=1.8.2
+
+before_script:
+- sudo cat /proc/sys/fs/binfmt_misc/status
+- sudo sh -c "echo ':arm:M::\x7fELF\x01\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02\x00\x28\x00:\xff\xff\xff\xff\xff\xff\xff\x00\xff\xff\xff\xff\xff\xff\xff\xff\xfe\xff\xff\xff:/usr/bin/qemu-arm-static:' > /proc/sys/fs/binfmt_misc/register"
+
+script:
+- sudo -E sh .travis/build.sh
+
+after_success:
+- sudo -E sh .travis/deploy.sh
+
+after_script:
+- docker images
