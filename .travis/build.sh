@@ -8,6 +8,6 @@ TAGSPECIFIER="$VERSION"
 docker pull   "$REPOSITORY/ruby-$ARCH:2.3"
 docker tag -f "$REPOSITORY/ruby-$ARCH:2.3" "ruby:2.3"
 
-docker build -t "$TAG:$TAGSPECIFIER" --build-arg VERSION="$VERSION" "$PROJECT"
+docker build -t "$TAG:$TAGSPECIFIER" --build-arg VERSION="$VERSION" contrib/foreman
 
 docker run --rm "$TAG:$TAGSPECIFIER" version
