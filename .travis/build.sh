@@ -10,4 +10,4 @@ docker tag -f "$REPOSITORY/ruby-$ARCH:2.3" "ruby:2.3"
 
 docker build -t "$TAG:$TAGSPECIFIER" --build-arg VERSION="$VERSION" contrib/foreman
 
-docker run --rm "$TAG:$TAGSPECIFIER" version
+docker run --rm "$TAG:$TAGSPECIFIER" travis version
