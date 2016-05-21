@@ -27,4 +27,4 @@ WORKDIR    /usr/local/src
 
 USER       foreman
 
-ENTRYPOINT ["/usr/local/bundle/bin/travis"]
+ENTRYPOINT ["docker-exec", "travis"]
