@@ -11,5 +11,5 @@
 
 
 ```bash
-travis () { docker run -u root -it --rm --entrypoint=bash -v `pwd`:/usr/local/src encodeering/travis-amd64:1.8.2; }
+travis () { docker run -u root -it --rm --entrypoint=bash -v `pwd`:/usr/local/src encodeering/travis-amd64:1.8.2-debian; }
 ```
