@@ -12,12 +12,10 @@ RUN        useradd -m -s /bin/bash -u 1000 -U foreman
 
 COPY       config.yml /home/foreman/.travis/config.yml
 
-RUN        gem install travis -v ${VERSION} --no-rdoc --no-ri --verbose \
- &&                    travis version
-
 RUN        curl -L https://github.com/travis-ci/travis-build/archive/master.zip > ~foreman/master.zip \
  &&        unzip                    ~foreman/master.zip -d ~foreman/.travis                           \
  &&        rm                       ~foreman/master.zip                                               \
+ &&        sed -i "/gem 'travis'/c\gem 'travis', '${VERSION}'" ~foreman/.travis/travis-build-master/Gemfile \
  &&        bundle install --gemfile ~foreman/.travis/travis-build-master/Gemfile --verbose            \
  &&        chown -R foreman:foreman ~foreman/.travis
 
