@@ -2,11 +2,11 @@
 
 set -e
 
-import com.encodeering.docker.config
-import com.encodeering.docker.docker
+import com.encodeering.ci.config
+import com.encodeering.ci.docker
 
 docker-pull "$REPOSITORY/ruby-$ARCH:2.3-debian" "ruby:2.3"
 
-docker build -t "$DOCKER_IMAGE" --build-arg VERSION="$PIN" foreman
+docker-build --build-arg VERSION="$PIN" foreman
 
-docker run --rm "$DOCKER_IMAGE" travis version
+docker-verify travis version
