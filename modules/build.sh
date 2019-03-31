@@ -5,7 +5,7 @@ set -e
 import com.encodeering.ci.config
 import com.encodeering.ci.docker
 
-docker-pull "$REPOSITORY/ruby-$ARCH:2.3-debian" "ruby:2.3"
+docker-pull "$REPOSITORY/ruby-$ARCH:2.5-debian" "ruby:2.5"
 
 docker-build --build-arg VERSION="$PIN" foreman
 
