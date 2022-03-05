@@ -25,6 +25,4 @@ WORKDIR    /usr/local/src
 
 USER       foreman
 
-ENTRYPOINT ["docker-exec"]
-
 CMD        ["travis", "help"]
